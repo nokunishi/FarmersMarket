@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "banana",
+    "price": 2.99,
+    "imageUrl": "./images/banana.jpg"
+  },
+  {
+    "id": 1,
+    "name": "orange",
+    "price": 5.99,
+    "imageUrl": "./images/orange.jpg"
+  },
+  {
+    "id": 1,
+    "name": "strawberry",
+    "price": 10.49,
+    "imageUrl": "./images/strawberry.jpg"
+  },
+  {
+    "id": 1,
+    "name": "bluberries",
+    "price": 12.00,
+    "imageUrl": "./images/bluberry.jpg"
+  }
+]
