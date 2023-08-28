@@ -6,19 +6,19 @@
     "imageUrl": "./images/banana.jpg"
   },
   {
-    "id": 1,
+    "id": 2,
     "name": "orange",
     "price": 5.99,
     "imageUrl": "./images/orange.jpg"
   },
   {
-    "id": 1,
+    "id": 3,
     "name": "strawberry",
     "price": 10.49,
     "imageUrl": "./images/strawberry.jpg"
   },
   {
-    "id": 1,
+    "id": 4,
     "name": "bluberries",
     "price": 12.00,
     "imageUrl": "./images/bluberry.jpg"

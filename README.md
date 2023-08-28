@@ -7,3 +7,4 @@ TODO
 - add availability
 - change currency depending on where the user lives
 - add a loading... page
+- search bar and recommendations

@@ -1,4 +1,6 @@
 import { ReactNode, createContext, useContext, useState } from "react";
+import { ShoppingCart } from "../components/ShoppingCart";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 type ShoppingCartProviderProps = {
     children: ReactNode
@@ -10,10 +12,15 @@ type CartItem = {
 }
 
 type ShoppingCartContex = {
+    openCart: () => void 
+    closedCart: () => void 
     getItemQuantity: (id: number) => number
     increaseCartQuantity: (id: number) => void 
     decreaseCartQuantity: (id: number) => void
     removeFromCart: (id: number) => void     
+
+    cartQuantity: number
+    cartItems: CartItem[]
 }
 
 const ShoppingCartContext = createContext({} as ShoppingCartContex);
@@ -25,10 +32,18 @@ export function useShoppingCart() {
 
 
 export function ShoppingCartProvider({children}: ShoppingCartProviderProps ) {
-    const [cartItem, setCartItems] = useState<CartItem[]>([])
+    const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", [])
+    const [isOpen, setIsOpen] = useState(false)
+
+    const cartQuantity = cartItems.map(item => item.quantity).reduce((quantity, item_quantity) => {
+       return quantity + item_quantity}, 0
+    )
+
+    const openCart = () => setIsOpen(true)
+    const closedCart = () => setIsOpen(false)
 
     function getItemQuantity(id:number) {
-        const item =  cartItem.find(item => item.id === id)
+        const item =  cartItems.find(item => item.id === id)
 
         if (item == null) {
             return 0
@@ -78,7 +93,10 @@ export function ShoppingCartProvider({children}: ShoppingCartProviderProps ) {
 
 
 
-    return <ShoppingCartContext.Provider value = {{getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart}}>
+    return <ShoppingCartContext.Provider
+     value = {{openCart, closedCart, getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, cartItems
+     , cartQuantity}}>
     {children}
+    <ShoppingCart isOpen = {isOpen} />
     </ShoppingCartContext.Provider>
 }
