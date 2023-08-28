@@ -23,11 +23,14 @@ export function CartItem({id, quantity}: CartItemProps) {
       >
         <img
           src={item.imageUrl}
-          style={{ width: "120px", height: "100px", objectFit: "cover" }}
+          style={{ width: "6rem", height: "5rem", objectFit: "cover" }}
         />
         <div className="me-auto">
-          <div className="">
-            <span style={{ fontSize: "1.2rem" }}> {item.name.charAt(0).toUpperCase() + item.name.slice(1)} </span>
+          <div>
+            <span style={{ fontSize: "1.2rem" }}>
+              {" "}
+              {item.name.charAt(0).toUpperCase() + item.name.slice(1)}{" "}
+            </span>
             {quantity > 1 && (
               <span className="text-muted" style={{ fontSize: "0.65rem" }}>
                 x {quantity}
@@ -37,9 +40,16 @@ export function CartItem({id, quantity}: CartItemProps) {
           <div className="text-muted" style={{ fontSize: "0.75rem" }}>
             {formatCurrency(item.price)}
           </div>
-          <div> {formatCurrency(item.price * quantity)} </div>
-          <Button variant = "outline-danger" size = "sm" onClick = {() => removeFromCart(item.id)}> &times; </Button>
         </div>
+        <div> {formatCurrency(item.price * quantity)} </div>
+        <Button
+          variant="danger"
+          size="sm"
+          onClick={() => removeFromCart(item.id)}
+        >
+          {" "}
+          &times;{" "}
+        </Button>
       </Stack>
     );
 }
