@@ -15,7 +15,13 @@ export function ShoppingCart({isOpen}: ShoppingCartProps) {
 
     return (
       <Offcanvas show={isOpen} onHide={closedCart} placement="end">
-        <div className="offcanvas-header" style={{fontSize: "1.5rem"}}> Cart </div>
+        <div
+          className="offcanvas-header"
+          style={{ fontSize: "1.8rem", fontFamily: "Book Antiqua" }}
+        >
+          {" "}
+          Cart{" "}
+        </div>
         <Offcanvas.Header closeButton>
           <Offcanvas.Body>
             <Stack gap={3}>
@@ -23,12 +29,18 @@ export function ShoppingCart({isOpen}: ShoppingCartProps) {
                 <CartItem {...item} />
               ))}
 
-              <div className="ms-auto fw-bold fs-5">
-                Total: {formatCurrency(cartItems.reduce((total, cartItem) => {
-                    const item = storeItems.find(i => i.id === cartItem.id) 
+              <div
+                className="ms-auto fw-bold fs-5"
+                style={{ fontFamily: "Book Antiqua" }}
+              >
+                Total:{" "}
+                {formatCurrency(
+                  cartItems.reduce((total, cartItem) => {
+                    const item = storeItems.find((i) => i.id === cartItem.id);
 
-                    return total + (item?.price || 0) * cartItem.quantity}, 0
-                ))}
+                    return total + (item?.price || 0) * cartItem.quantity;
+                  }, 0)
+                )}
               </div>
             </Stack>
           </Offcanvas.Body>

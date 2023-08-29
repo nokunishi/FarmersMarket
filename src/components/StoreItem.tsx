@@ -29,7 +29,7 @@ export function StoreItem({id, name, price, imageUrl}: StoreItemProps) {
         />
         <Card.Body className="d-flex flex-column">
           <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
-            <span className="fs-2">
+            <span className="fs-2" style={{ fontFamily: "Book Antiqua" }}>
               {" "}
               {name.charAt(0).toUpperCase() + name.slice(1)}{" "}
             </span>
@@ -40,6 +40,10 @@ export function StoreItem({id, name, price, imageUrl}: StoreItemProps) {
               <Button
                 className="w-100"
                 onClick={() => increaseCartQuantity(id)}
+                style={{
+                  backgroundColor: "lightblue",
+                  borderColor: "lightgrey",
+                }}
               >
                 + Add to Cart
               </Button>
@@ -53,16 +57,37 @@ export function StoreItem({id, name, price, imageUrl}: StoreItemProps) {
                     justify-content-center"
                   style={{ gap: "0.5rem" }}
                 >
-                  <Button onClick={() => decreaseCartQuantity(id)}> - </Button>
+                  <Button
+                    onClick={() => decreaseCartQuantity(id)}
+                    style={{
+                      backgroundColor: "paleturquoise",
+                      borderColor: "lightgrey",
+                    }}
+                  >
+                    {" "}
+                    -{" "}
+                  </Button>
                   <div>
                     <span className="fs-3"> {quantity} </span> in cart
                   </div>
-                  <Button onClick={() => increaseCartQuantity(id)}> + </Button>
+                  <Button
+                    onClick={() => increaseCartQuantity(id)}
+                    style={{ backgroundColor: "paleturquoise",
+                      borderColor: "lightgrey"}}
+                  >
+                    {" "}
+                    +{" "}
+                  </Button>
                 </div>
                 <Button
                   variant="danger"
                   size="sm"
                   onClick={() => removeFromCart(id)}
+                  style={{
+                    color: "black",
+                    backgroundColor: "white",
+                    borderColor: "grey",
+                  }}
                 >
                   {" "}
                   Remove{" "}

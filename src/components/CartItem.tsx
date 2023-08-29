@@ -27,7 +27,7 @@ export function CartItem({id, quantity}: CartItemProps) {
         />
         <div className="me-auto">
           <div>
-            <span style={{ fontSize: "1.2rem" }}>
+            <span style={{ fontSize: "1.2rem", fontFamily: "Book Antiqua" }}>
               {" "}
               {item.name.charAt(0).toUpperCase() + item.name.slice(1)}{" "}
             </span>
